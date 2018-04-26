@@ -98,13 +98,15 @@ class hzOCR(object):
     def SQQYDZ(self):
         return self.rowstr(9).split('址')[-1].split('联')[0].replace('名称', '')
     def LXDH(self):
-        return ''.join(re.findall("\d|-|\.", self.rowstr(9).split('联系人')[0].split('联')[-1]))
+        return re.findall('\d{4}.?\d{8}|\d{11}|\d{3}.?\d{4}.?\d{4}|\d{3}.?\d{3}.?\d{4}|\d{2}.?\d{4}.?\d{6}',self.rowstr(9))[0]
+        #return ''.join(re.findall("\d|-|\.", self.rowstr(9).split('联系人')[0].split('联')[-1]))
     def LXR(self):
         return ''.join(re.findall("[\u4e00-\u9fa5a-zA-Z0-9]", self.rowstr(9).split('人')[-1]))
     def ZHSBZRDWMC(self):
         return self.rowstr(10).split('称')[-1].split('联')[0]
     def ZHSBDWDH(self):
-        return ''.join(re.findall("\d|-", self.rowstr(10)))
+        return re.findall('\d{4}.?\d{8}|\d{11}|\d{3}.?\d{4}.?\d{4}|\d{3}.?\d{3}.?\d{4}|\d{2}.?\d{4}.?\d{6}',self.rowstr(10))[0]
+        #return ''.join(re.findall("\d|-", self.rowstr(10)))
     def ZHSBDWLXR(self):
         return self.rowstr(10).split('人')[-1].split('入')[-1].replace('|', '')
     def ZHSBDWDZ(self):
@@ -112,7 +114,8 @@ class hzOCR(object):
     def ZHSBDWCZ(self):
         return self.rowstr(11).split('真')[-1].split('邮')[0].replace('|', '').replace('[', '').replace('\\', '').replace('「', '')
     def ZHSBDWYB(self):
-        return self.rowstr(11).split('邮编')[-1].replace('|', '')
+        return re.findall('\d{6}',re.findall('邮\D{0,3}\d{6}|编\D{0,3}\d{6}',self.rowstr(10))[0])[0]
+        #return self.rowstr(11).split('邮编')[-1].replace('|', '')
     def CZ(self):
         return '/'
     def JYYJ(self):
