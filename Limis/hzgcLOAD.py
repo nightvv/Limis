@@ -218,7 +218,3 @@ class hzgc_API(object):
     def CYSJ(self,i):
         return self.sheet['F'+str(i+1)].value #抽样时间
 
-
-s = hzgc_API()
-s.SCDW(3)
-s.JXSMC(3)
