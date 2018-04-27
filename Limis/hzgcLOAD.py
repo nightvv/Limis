@@ -165,7 +165,7 @@ class hzgc_API(object):
         return '2018年国家化妆品监督抽检' #检验目的小项
 
     def JPSL(self,i):
-        return int(self.sheet['Z'+str(i+1)].value)-1 #检品数量
+        return int(self.sheet['Z'+str(i+1)].value) #检品数量
 
     def JPSLDW(self,i):
         return self.sheet['AD'+str(i+1)].value[-1] #检品数量单位
