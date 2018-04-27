@@ -6,6 +6,7 @@ Python: 3.6
 Software: PyCharm
 File: OCR.py
 Time: 2018/4/25 20:10
+Version:1.2
 """
 from aip import AipOcr
 import json
