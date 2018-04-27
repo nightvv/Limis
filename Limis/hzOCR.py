@@ -51,7 +51,6 @@ class hzOCR(object):
         while 'error_code' in result_table or 'result' in result_table and result_table['result']['ret_code'] != 3:
             time.sleep(0.3)
             print('表格正在识别中...')
-            aipOcr.getTableRecognitionResult(id, options_table)
             result_table = aipOcr.getTableRecognitionResult(id, options_table)
         print('表格识别完毕!')
         dic_table = json.loads(result_table['result']['result_data'])['forms'][0]['body']
