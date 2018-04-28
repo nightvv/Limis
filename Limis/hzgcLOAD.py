@@ -137,7 +137,7 @@ class hzgc_API(object):
         return self.sheet['AD'+str(i+1)].value #抽样基数
 
     def DJ(self,i):
-        return self.sheet['AV'+str(i+1)].value.split('单价')[-1].split('留样')[0].replace(':','').replace('；','').replace('：','').split('（')[0] #单价
+        return self.sheet['AV'+str(i+1)].value.split('单价')[-1].split('留')[0].replace('：','').replace(':','').replace(';','').replace('；','').replace(',','').replace('，','').split('（')[0] #单价
 
     def ZXBZ(self,i):
         return '/' #执行标准
@@ -150,8 +150,10 @@ class hzgc_API(object):
             return '纸盒'
         else:
             return '塑瓶'
+
     def BZGG(self,i):
         return self.sheet['AA'+str(i+1)].value #包装规格
+
     def JX(self,i):
         return '/' #剂型
 
@@ -171,7 +173,11 @@ class hzgc_API(object):
         return self.sheet['AD'+str(i+1)].value[-1] #检品数量单位
 
     def LYSL(self,i):
-        return ''.join(re.findall('[0-9]',self.sheet['AV'+str(i+1)].value.split('留样')[-1][:-1].split(' ')[0])) #留样数量
+        char_num = {'一':'1','二':'2','三':'3','四':'4','五':'5','六':'6','七':'7','八':'8','九':'9','十':'10',}
+        if ''.join(re.findall('[0-9]|[一二三四五六七八九十]',self.sheet['AV'+str(i+1)].value.split('留')[-1][:-1].split(' ')[0])).isdigit():
+            return ''.join(re.findall('[0-9]|[一二三四五六七八九十]',self.sheet['AV'+str(i+1)].value.split('留')[-1][:-1].split(' ')[0]))
+        else:
+            return char_num[''.join(re.findall('[0-9]|[一二三四五六七八九十]',self.sheet['AV'+str(i+1)].value.split('留样')[-1][:-1].split(' ')[0]))] #留样数量
 
     def PZWH(self,i):
         return self.sheet['Y'+str(i+1)].value #批准文号
