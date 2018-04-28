@@ -15,7 +15,7 @@ from Limis.hzOCR import hzOCR
 from selenium import webdriver
 from prettytable import PrettyTable
 
-print('本软件目前仅适用于【化妆品国抽】导入。\n【委托方所属地区】、【样品包装方式】和【抽样人员】需要自行核对！！！\n【委托方所属地区】、【样品包装方式】和【抽样人员】需要自行核对！！！\n【委托方所属地区】、【样品包装方式】和【抽样人员】需要自行核对！！！\n -------2018-04-23 Version 1.0-------')
+print('本软件目前仅适用于【化妆品国抽】导入。\n【委托方所属地区】、【样品包装方式】和【抽样人员】需要自行核对！！！\n【委托方所属地区】、【样品包装方式】和【抽样人员】需要自行核对！！！\n【委托方所属地区】、【样品包装方式】和【抽样人员】需要自行核对！！！\n -------2018-04-23 Version 1.3-------')
 limis_name = input('请输入Limis用户名(按ENTER确认):')
 limis_pwd = input('请输入Limis密码(按ENTER确认):')
 
